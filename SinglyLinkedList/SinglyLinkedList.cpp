@@ -67,20 +67,22 @@ public:
     // Clear the linked list
     void clear() {
         Node* current{ head };
-        // While current is not nullptr
-        // Create a temporary pointer to the next node
-        // Delete current
-        // Move current to the next node
-        // Set head to nullptr
+        while (current) {
+            Node* nextNode{ current->next };
+            delete current;
+            current = nextNode;
+        }
+        head = nullptr;
     }
 
     // Display the linked list
     void display() const {
         Node* current{ head };
-        // While current is not nullptr
-        // Print current's data followed by " -> "
-        // Move to the next node
-        // Print "nullptr" at the end
+        while (current) {
+            std::cout << current->data << " -> ";
+            current = current->next;
+        }
+        std::cout << "nullptr" << '\n';
     }
 };
 
